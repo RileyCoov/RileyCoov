@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BFF75C6E2D43707B00CF472F /* AdditiveSynthClean */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdditiveSynthClean; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF75C6E2D43707B00CF472F /* AdditiveSynthChange */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AdditiveSynthChange; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,7 +52,7 @@
 		BFF75C6F2D43707B00CF472F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFF75C6E2D43707B00CF472F /* AdditiveSynthClean */,
+				BFF75C6E2D43707B00CF472F /* AdditiveSynthChange */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,9 +60,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFF75C6D2D43707B00CF472F /* AdditiveSynthClean */ = {
+		BFF75C6D2D43707B00CF472F /* AdditiveSynthChange */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFF75C752D43707B00CF472F /* Build configuration list for PBXNativeTarget "AdditiveSynthClean" */;
+			buildConfigurationList = BFF75C752D43707B00CF472F /* Build configuration list for PBXNativeTarget "AdditiveSynthChange" */;
 			buildPhases = (
 				BFF75C6A2D43707B00CF472F /* Sources */,
 				BFF75C6B2D43707B00CF472F /* Frameworks */,
@@ -75,11 +75,11 @@
 			fileSystemSynchronizedGroups = (
 				BFF75C702D43707B00CF472F /* AdditiveSynthClean */,
 			);
-			name = AdditiveSynthClean;
+			name = AdditiveSynthChange;
 			packageProductDependencies = (
 			);
 			productName = AdditiveSynthClean;
-			productReference = BFF75C6E2D43707B00CF472F /* AdditiveSynthClean */;
+			productReference = BFF75C6E2D43707B00CF472F /* AdditiveSynthChange */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -96,7 +96,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BFF75C692D43707B00CF472F /* Build configuration list for PBXProject "AdditiveSynthClean" */;
+			buildConfigurationList = BFF75C692D43707B00CF472F /* Build configuration list for PBXProject "AdditiveSynthChange" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -110,7 +110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFF75C6D2D43707B00CF472F /* AdditiveSynthClean */,
+				BFF75C6D2D43707B00CF472F /* AdditiveSynthChange */,
 			);
 		};
 /* End PBXProject section */
@@ -260,7 +260,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BFF75C692D43707B00CF472F /* Build configuration list for PBXProject "AdditiveSynthClean" */ = {
+		BFF75C692D43707B00CF472F /* Build configuration list for PBXProject "AdditiveSynthChange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFF75C732D43707B00CF472F /* Debug */,
@@ -269,7 +269,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFF75C752D43707B00CF472F /* Build configuration list for PBXNativeTarget "AdditiveSynthClean" */ = {
+		BFF75C752D43707B00CF472F /* Build configuration list for PBXNativeTarget "AdditiveSynthChange" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFF75C762D43707B00CF472F /* Debug */,
