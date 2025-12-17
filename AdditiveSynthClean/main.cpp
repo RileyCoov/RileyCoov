@@ -89,6 +89,27 @@ std::vector<std::vector<float>> audioBufferToVector(const AudioBuffer& buff)
     return audioData;
 }
 
+/**
+ *These are the contents saved frame by frame for the audio signal. During
+ *implemenation thrown into "active_peaks" which holds onto the contents of
+ *importance frame by frame, and all collected in a vector<vector<active_peaks>>
+ */
+/*
+ class PeakTrack {
+ public:
+     int id;
+     double freq_hz;
+     double max_db;
+     double current_db;
+     int peak_bin;
+     double phase;
+     bool alive;
+     bool edit;
+     
+     PeakTrack(int _id, double _freq, double _mag, int _peak_bin, double _phase) : id(_id), freq_hz(_freq), max_db(_mag), current_db(_mag), peak_bin(_peak_bin), phase(_phase), alive(true), edit(true) {}
+ };
+ */
+
 
 /**
 *tracks the transients, we compare previous frame with the current frame and
@@ -166,6 +187,37 @@ int find_best_match_peak(int peak_bin, const vector<PeakTrack>& active_peaks, do
         }
     }
     return best_idx;
+}
+
+/**
+ So the two functions below are specific to window switching. Single parabolic
+ interpolation changes what we have in the frequency and magnitude based on the
+ fact that we are having to scale a bin now to be more accurate to what the smaller
+ window is going to be holding
+ */
+void single_parabolic_interpolation(const vector<double>& mag_spec, double bin, double& true_freq, double& true_mag) {
+    int lower_bin = floor(bin);
+    if (lower_bin == bin) {
+        true_freq = -1.0;
+        true_mag = mag_spec[bin];
+        return;
+    }
+    if (lower_bin < 1 || lower_bin >= mag_spec.size()-1) {
+        true_freq = bin;
+        true_mag = mag_spec[round(bin)];
+        return;
+    }
+    
+    double alpha = mag_spec[lower_bin-1];
+    double beta = mag_spec[lower_bin];
+    double gamma = mag_spec[lower_bin+1];
+    double denom = alpha - 2 * beta + gamma;
+    double p = 0.0;
+    if (denom != 0.0) {
+        p = 0.f * (alpha-gamma) / denom;
+    }
+    true_freq = lower_bin + p;
+    true_mag = beta - 0.25 * (alpha-gamma) * p;
 }
 
 
@@ -395,6 +447,7 @@ int main(int argc, const char * argv[]) {
                 }
                 if (scaled_bin >= 0 && scaled_bin < (int)mag_spec.size() - 1) {
                     double true_freq, true_mag;
+                    single_parabolic_interpolation(mag_spec, scaled_bin, true_freq, true_mag);
                     ap.current_db = true_mag;
                     //ap.freq_hz = (true_freq == -1.0) ? ap.freq_hz : true_freq * ((double)sr / (double)frame_size);
                     ap.phase = interpolate_phase(phase_spec, scaled_bin);
@@ -430,6 +483,14 @@ int main(int argc, const char * argv[]) {
         
         
     }
+    //Here is trying to save the file to filename rather than writing it out
+    string fileSave = "/Users/Riley/Desktop/479SineOut.bin";
+    save_binary(fileSave, num_frames, containsSynthPlacement, frames_peaks);
+    string fila = "/Users/Riley/Desktop/479SineOut.bin";
+    int frame_nums = 18;
+    vector<SynthInformation> placement;
+    vector<vector<PeakTrack>> framess;
+    read_binary(fila, frame_nums, placement, framess);
     
     
     
